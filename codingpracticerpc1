@@ -1,0 +1,61 @@
+const getUserChoice = userInput => {
+  userInput = userInput.toLowerCase();
+
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb'){
+    return userInput; 
+  }  else {
+    console.log ('Error, please type: rock, paper, or scissors.');
+  }
+}
+const getComputerChoice = () => {   
+  const randomNumber = Math.floor(Math.random()* 3);
+switch (randomNumber){
+  case 0:
+    return 'rock';
+  case 1:
+    return 'paper';
+  case 2:
+    return 'scissors';
+  }
+}
+const determineWinner = (userChoice, computerChoice) => {
+  if ( userChoice === computerChoice) {
+    return 'The game is a draw!';
+}
+  if ( userChoice === 'rock') {
+    if (computerChoice === 'paper') {
+      return 'Sorry, you lose.';
+    } else {
+      return 'Congratulations, you won!';
+    }
+  }
+  
+if (userChoice === 'paper') {
+  if (computerChoice === 'scissors') {
+       return 'Sorry, you lose.';
+  } else {
+    return 'Nice, you won!';
+  }
+}
+
+if (userChoice === 'scissors') {
+  if (computerChoice === 'rock') {
+    return 'Nice, you won!';
+  }
+}
+if (userChoice === 'bomb') {
+  return 'You sneaky rascal, you win!'
+}
+};
+
+const playGame= () => {
+  const userChoice = getUserChoice('bomb');
+    const computerChoice = getComputerChoice();
+    console.log('You threw ' + userChoice);
+   // console.log('You thew ${userChoice}')
+    console.log('The computer threw ' + computerChoice);
+    // console.log('The computer threw ${computerChoice}')
+    console.log(determineWinner(userChoice, computerChoice));
+}
+
+playGame();
